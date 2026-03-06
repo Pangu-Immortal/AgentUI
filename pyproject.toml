@@ -1,0 +1,9 @@
+[project]
+name = "agent-ui"
+version = "1.0.0"
+description = "AgentUI - 小舒舒办公室 AI Agent 像素办公室看板"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "flask>=3.0.0",
+]
