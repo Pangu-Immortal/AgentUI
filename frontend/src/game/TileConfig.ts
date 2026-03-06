@@ -12,8 +12,8 @@
 /** 瓦片大小（像素） */
 export const TILE_SIZE = 16
 
-/** 渲染缩放倍数（16px → 48px 显示） */
-export const TILE_SCALE = 3
+/** 渲染缩放倍数（16px → 64px 显示，像素风更清晰） */
+export const TILE_SCALE = 4
 
 /** 素材包路径（相对于 public/） */
 export const ASSET_PATHS = {

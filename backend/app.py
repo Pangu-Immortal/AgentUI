@@ -267,9 +267,9 @@ def office_config():
     - 3x3 九宫格工位，间距合理
     - 休息区有沙发/绿植位置，不重叠
     """
-    desk_w, desk_h = 44, 28                           # 桌子尺寸（与小人比例协调）
-    col_gap, row_gap = 100, 80                        # 工位列间距、行间距
-    work_x0, work_y0 = 460, 140                       # 工作区起始偏移
+    desk_w, desk_h = 56, 36                           # 桌子尺寸（与 64px 小人比例协调）
+    col_gap, row_gap = 130, 110                       # 工位列间距、行间距
+    work_x0, work_y0 = 560, 180                       # 工作区起始偏移
     desks = []
     for i in range(9):
         col, row = i % 3, i // 3                      # 3x3 网格
@@ -282,13 +282,13 @@ def office_config():
         })
     return jsonify({
         "office_name": "小舒舒办公室",
-        "map_width": 1200,
-        "map_height": 700,
+        "map_width": 1600,
+        "map_height": 900,
         "zones": {
-            "rest":    {"x": 30,  "y": 40,  "width": 340, "height": 280, "label": "休息区"},
-            "work":    {"x": 420, "y": 40,  "width": 380, "height": 340, "label": "工作区"},
-            "meeting": {"x": 30,  "y": 380, "width": 340, "height": 280, "label": "会议区"},
-            "bug":     {"x": 880, "y": 380, "width": 280, "height": 280, "label": "Bug角落"},
+            "rest":    {"x": 30,  "y": 40,  "width": 460, "height": 400, "label": "休息区"},
+            "work":    {"x": 530, "y": 40,  "width": 460, "height": 440, "label": "工作区"},
+            "meeting": {"x": 30,  "y": 480, "width": 460, "height": 380, "label": "会议区"},
+            "bug":     {"x": 1060, "y": 480, "width": 500, "height": 380, "label": "Bug角落"},
         },
         "desks": desks,
         "poll_interval_ms": 2500,

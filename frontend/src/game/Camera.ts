@@ -196,7 +196,7 @@ export class Camera {
     const padY = 40                                          // 垂直边距
     const scaleX = (this.screenWidth - padX * 2) / this.mapWidth  // 水平缩放比
     const scaleY = (this.screenHeight - padY * 2) / this.mapHeight // 垂直缩放比
-    this.scale = Math.max(this.minScale, Math.min(this.maxScale, Math.min(scaleX, scaleY))) // 取较小值
+    this.scale = Math.max(0.75, Math.min(this.maxScale, Math.min(scaleX, scaleY)))           // 最小 0.75x 保证角色清晰
     this.container.scale.set(this.scale)                     // 应用缩放
     this.centerOn(this.mapWidth / 2, this.mapHeight / 2)     // 居中显示
     console.log(`[Camera] 自动适配屏幕 scale=${this.scale.toFixed(3)}`)
