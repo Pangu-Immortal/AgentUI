@@ -24,7 +24,7 @@ const proxyPaths = [
   '/agent-push',      // Agent 推送
   '/join-agent',      // 加入 Agent
   '/leave-agent',     // 离开 Agent
-  '/assets',          // 静态资源
+  // '/assets' 已移除 — public/assets/ 由 Vite 直接提供静态文件
   '/yesterday-memo',  // 昨日备忘
 ]
 

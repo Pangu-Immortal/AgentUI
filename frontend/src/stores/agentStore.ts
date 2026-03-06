@@ -56,12 +56,12 @@ export const useAgentStore = defineStore('agent', () => {
       const data = await fetchAgents() // 从后端获取 Agent 状态列表
       const merged: AgentRuntime[] = [] // 合并结果
 
-      // 遍历所有角色，与运行时数据合并
+      // 遍历所有角色，通过 name 字段与运行时数据合并
       for (const [agentId, role] of Object.entries(roles.value)) {
         const typedRole = role as AgentRole // 类型断言
-        // 在运行时数据中查找匹配的 Agent
+        // 通过 name 匹配运行时 Agent（后端 agentId 是自动生成的，无法直接匹配角色 key）
         const runtime = Array.isArray(data)
-          ? data.find((a: Record<string, unknown>) => a.agent_id === agentId)
+          ? data.find((a: Record<string, unknown>) => a.name === typedRole.name)
           : null
         merged.push({
           id: agentId,                                        // Agent 唯一标识

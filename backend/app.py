@@ -260,21 +260,37 @@ def agent_roles():
 
 @app.route("/office-config", methods=["GET"])
 def office_config():
-    """返回办公室布局配置（区域、工位坐标、轮询间隔等）"""
+    """返回办公室布局配置（区域、工位坐标、轮询间隔等）
+
+    布局说明：地图 1200x700，紧凑像素风格
+    - 桌子 44x28，与小人(24x36)比例协调
+    - 3x3 九宫格工位，间距合理
+    - 休息区有沙发/绿植位置，不重叠
+    """
+    desk_w, desk_h = 44, 28                           # 桌子尺寸（与小人比例协调）
+    col_gap, row_gap = 100, 80                        # 工位列间距、行间距
+    work_x0, work_y0 = 460, 140                       # 工作区起始偏移
+    desks = []
+    for i in range(9):
+        col, row = i % 3, i // 3                      # 3x3 网格
+        desks.append({
+            "index": i,
+            "x": work_x0 + col * col_gap,
+            "y": work_y0 + row * row_gap,
+            "width": desk_w,
+            "height": desk_h,
+        })
     return jsonify({
         "office_name": "小舒舒办公室",
-        "map_width": 1920,
-        "map_height": 1080,
+        "map_width": 1200,
+        "map_height": 700,
         "zones": {
-            "rest": {"x": 100, "y": 100, "width": 400, "height": 400, "label": "休息区"},
-            "work": {"x": 600, "y": 100, "width": 900, "height": 800, "label": "工作区"},
-            "meeting": {"x": 100, "y": 600, "width": 400, "height": 400, "label": "会议区"},
-            "bug": {"x": 1600, "y": 800, "width": 250, "height": 250, "label": "Bug角落"},
+            "rest":    {"x": 30,  "y": 40,  "width": 340, "height": 280, "label": "休息区"},
+            "work":    {"x": 420, "y": 40,  "width": 380, "height": 340, "label": "工作区"},
+            "meeting": {"x": 30,  "y": 380, "width": 340, "height": 280, "label": "会议区"},
+            "bug":     {"x": 880, "y": 380, "width": 280, "height": 280, "label": "Bug角落"},
         },
-        "desks": [
-            {"index": i, "x": 650 + (i % 3) * 280, "y": 150 + (i // 3) * 250, "width": 200, "height": 150}
-            for i in range(9)
-        ],
+        "desks": desks,
         "poll_interval_ms": 2500,
     })
 
@@ -1270,7 +1286,7 @@ def health():
     """Health check"""
     return jsonify({
         "status": "ok",
-        "service": "star-office-ui",
+        "service": "agent-ui",
         "timestamp": datetime.now().isoformat(),
     })
 
