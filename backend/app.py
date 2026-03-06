@@ -80,7 +80,7 @@ STATE_TO_AREA_MAP = {
 
 
 app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path="/static")
-app.secret_key = os.getenv("FLASK_SECRET_KEY") or os.getenv("STAR_OFFICE_SECRET") or "star-office-dev-secret-change-me"
+app.secret_key = os.getenv("FLASK_SECRET_KEY") or os.getenv("STAR_OFFICE_SECRET") or os.urandom(32).hex()
 
 # Session hardening
 app.config.update(
@@ -100,7 +100,7 @@ _bg_tasks_lock = threading.Lock()
 
 # Generate a version timestamp once at server startup for cache busting
 VERSION_TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
-ASSET_DRAWER_PASS_DEFAULT = os.getenv("ASSET_DRAWER_PASS", "1234")
+ASSET_DRAWER_PASS_DEFAULT = os.getenv("ASSET_DRAWER_PASS", os.urandom(8).hex())
 
 if is_production_mode():
     hardening_errors = []
@@ -2106,7 +2106,8 @@ if __name__ == "__main__":
     print("Star Office UI - Backend State Service")
     print("=" * 50)
     print(f"State file: {STATE_FILE}")
-    print(f"Listening on: http://0.0.0.0:{backend_port}")
+    bind_host = os.getenv("BIND_HOST", "127.0.0.1")      # 默认仅监听本地，生产环境可设为 0.0.0.0
+    print(f"Listening on: http://{bind_host}:{backend_port}")
     if backend_port != 19000:
         print(f"(Port override: set STAR_BACKEND_PORT to change; current: {raw_port})")
     else:
@@ -2127,5 +2128,5 @@ if __name__ == "__main__":
             print("Security hardening: OK")
     print("=" * 50)
 
-    app.run(host="0.0.0.0", port=backend_port, debug=False)
+    app.run(host=bind_host, port=backend_port, debug=False)
 

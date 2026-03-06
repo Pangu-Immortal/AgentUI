@@ -7,4 +7,9 @@ __pycache__/
 agents-state.json
 state.json
 join-keys.json
+runtime-config.json
+.env
+.env.*
+*.pem
+*.key
 
