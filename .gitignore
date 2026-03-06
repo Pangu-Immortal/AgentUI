@@ -6,7 +6,6 @@ __pycache__/
 .DS_Store
 agents-state.json
 state.json
-join-keys.json
 runtime-config.json
 .env
 .env.*

@@ -1,0 +1,85 @@
+{
+  "keys": [
+    {
+      "key": "ocj_main_lobster",
+      "used": false,
+      "reusable": true,
+      "maxConcurrent": 3,
+      "usedBy": null,
+      "usedByAgentId": "main",
+      "usedAt": null
+    },
+    {
+      "key": "ocj_android_dev",
+      "used": false,
+      "reusable": true,
+      "maxConcurrent": 3,
+      "usedBy": null,
+      "usedByAgentId": "android-dev",
+      "usedAt": null
+    },
+    {
+      "key": "ocj_ios_dev",
+      "used": false,
+      "reusable": true,
+      "maxConcurrent": 3,
+      "usedBy": null,
+      "usedByAgentId": "ios-dev",
+      "usedAt": null
+    },
+    {
+      "key": "ocj_web_dev",
+      "used": false,
+      "reusable": true,
+      "maxConcurrent": 3,
+      "usedBy": null,
+      "usedByAgentId": "web-dev",
+      "usedAt": null
+    },
+    {
+      "key": "ocj_backend_dev",
+      "used": false,
+      "reusable": true,
+      "maxConcurrent": 3,
+      "usedBy": null,
+      "usedByAgentId": "backend-dev",
+      "usedAt": null
+    },
+    {
+      "key": "ocj_qa_lead",
+      "used": false,
+      "reusable": true,
+      "maxConcurrent": 3,
+      "usedBy": null,
+      "usedByAgentId": "qa-lead",
+      "usedAt": null
+    },
+    {
+      "key": "ocj_devops",
+      "used": false,
+      "reusable": true,
+      "maxConcurrent": 3,
+      "usedBy": null,
+      "usedByAgentId": "devops",
+      "usedAt": null
+    },
+    {
+      "key": "ocj_ui_designer",
+      "used": false,
+      "reusable": true,
+      "maxConcurrent": 3,
+      "usedBy": null,
+      "usedByAgentId": "ui-designer",
+      "usedAt": null
+    },
+    {
+      "key": "ocj_pm",
+      "used": false,
+      "reusable": true,
+      "maxConcurrent": 3,
+      "usedBy": null,
+      "usedByAgentId": "pm",
+      "usedAt": null
+    }
+  ]
+}

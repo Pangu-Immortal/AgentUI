@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Star Office UI - Backend State Service"""
 
-from flask import Flask, jsonify, send_from_directory, make_response, request, session
+from flask import Flask, jsonify, send_from_directory, make_response, request, session, redirect
 from datetime import datetime, timedelta
 import json
 import os
@@ -318,7 +318,10 @@ def electron_standalone_page():
 @app.route("/join", methods=["GET"])
 def join_page():
     """Serve the agent join page"""
-    with open(os.path.join(FRONTEND_DIR, "join.html"), "r", encoding="utf-8") as f:
+    join_file = os.path.join(FRONTEND_DIR, "join.html")
+    if not os.path.exists(join_file):                      # join.html 不存在时回退到主页
+        return redirect("/")
+    with open(join_file, "r", encoding="utf-8") as f:
         html = f.read()
     resp = make_response(html)
     resp.headers["Content-Type"] = "text/html; charset=utf-8"
@@ -328,7 +331,10 @@ def join_page():
 @app.route("/invite", methods=["GET"])
 def invite_page():
     """Serve human-facing invite instruction page"""
-    with open(os.path.join(FRONTEND_DIR, "invite.html"), "r", encoding="utf-8") as f:
+    invite_file = os.path.join(FRONTEND_DIR, "invite.html")
+    if not os.path.exists(invite_file):                    # invite.html 不存在时回退到主页
+        return redirect("/")
+    with open(invite_file, "r", encoding="utf-8") as f:
         html = f.read()
     resp = make_response(html)
     resp.headers["Content-Type"] = "text/html; charset=utf-8"
