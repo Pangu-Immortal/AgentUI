@@ -2,8 +2,6 @@
 
 AI Agent 像素风格办公室实时看板，9 个 AI Agent 在像素办公室中实时展示工作状态。
 
-> 基于 [Star-Office-UI](https://github.com/ringhyacinth/Star-Office-UI)（2.2K star）深度重构
-
 ![Vue3](https://img.shields.io/badge/Vue-3.5-4FC08D?logo=vue.js)
 ![PixiJS](https://img.shields.io/badge/PixiJS-8-E91E63?logo=pixijs)
 ![Flask](https://img.shields.io/badge/Flask-3.0-000000?logo=flask)
