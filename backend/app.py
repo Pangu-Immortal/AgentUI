@@ -282,8 +282,8 @@ def office_config():
         })
     return jsonify({
         "office_name": "小舒舒办公室",
-        "map_width": 1600,
-        "map_height": 900,
+        "map_width": 1280,
+        "map_height": 1024,
         "zones": {
             "rest":    {"x": 30,  "y": 40,  "width": 460, "height": 400, "label": "休息区"},
             "work":    {"x": 530, "y": 40,  "width": 460, "height": 440, "label": "工作区"},

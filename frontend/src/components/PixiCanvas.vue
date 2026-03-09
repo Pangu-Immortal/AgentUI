@@ -83,4 +83,9 @@ onUnmounted(() => {
   height: 100%;     /* 撑满父容器高度 */
   overflow: hidden; /* 隐藏溢出内容 */
 }
+
+/* PixiJS 生成的 canvas 默认 display:inline 会产生底部空白 */
+.pixi-canvas :deep(canvas) {
+  display: block;   /* 消除 inline 元素底部空白 */
+}
 </style>

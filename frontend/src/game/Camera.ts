@@ -190,15 +190,26 @@ export class Camera {
     console.log('[Camera] 拖拽和缩放事件已绑定')
   }
 
-  /** 自动缩放使整个地图适配屏幕（带边距） */
+  /** 自动缩放使地图宽度适配屏幕，垂直居中或顶部对齐 */
   fitToScreen(): void {
-    const padX = 40                                          // 水平边距
-    const padY = 40                                          // 垂直边距
-    const scaleX = (this.screenWidth - padX * 2) / this.mapWidth  // 水平缩放比
-    const scaleY = (this.screenHeight - padY * 2) / this.mapHeight // 垂直缩放比
-    this.scale = Math.max(0.75, Math.min(this.maxScale, Math.min(scaleX, scaleY)))           // 最小 0.75x 保证角色清晰
-    this.container.scale.set(this.scale)                     // 应用缩放
-    this.centerOn(this.mapWidth / 2, this.mapHeight / 2)     // 居中显示
+    // 按宽度适配，确保地图横向完整显示
+    const scaleX = this.screenWidth / this.mapWidth             // 宽度适配缩放比
+    const scaleY = this.screenHeight / this.mapHeight           // 高度适配缩放比
+    this.scale = Math.max(this.minScale, Math.min(this.maxScale, Math.min(scaleX, scaleY)))
+    this.container.scale.set(this.scale)                        // 应用缩放
+
+    // 水平居中
+    this.container.x = (this.screenWidth - this.mapWidth * this.scale) / 2
+
+    // 垂直方向：如果地图缩放后比屏幕矮，居中；否则顶部对齐
+    const scaledMapH = this.mapHeight * this.scale
+    if (scaledMapH < this.screenHeight) {
+      this.container.y = (this.screenHeight - scaledMapH) / 2  // 垂直居中
+    } else {
+      this.container.y = 0                                      // 顶部对齐
+    }
+
+    this.clampPosition()                                        // 限制边界
     console.log(`[Camera] 自动适配屏幕 scale=${this.scale.toFixed(3)}`)
   }
 

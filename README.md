@@ -2,8 +2,6 @@
 
 AI Agent 像素风格办公室实时看板，9 个 AI Agent 在像素办公室中实时展示工作状态。
 
-> 基于 [Star-Office-UI](https://github.com/ringhyacinth/Star-Office-UI)（2.2K star）深度重构
-
 ![Vue3](https://img.shields.io/badge/Vue-3.5-4FC08D?logo=vue.js)
 ![PixiJS](https://img.shields.io/badge/PixiJS-8-E91E63?logo=pixijs)
 ![Flask](https://img.shields.io/badge/Flask-3.0-000000?logo=flask)
@@ -189,7 +187,7 @@ AgentUI/
 | `ASSET_DRAWER_PASS` | 随机生成 | 素材编辑器密码（`start.sh` 默认设为 `demo`） |
 | `GEMINI_API_KEY` | 空 | Gemini API Key（仅 RPG 背景生图功能需要） |
 | `FLASK_SECRET_KEY` | 随机生成 | Flask Session 密钥（仅生产环境需要固定值） |
-| `STAR_OFFICE_ENV` | 空 | 设为 `production` 启用安全强制检查 |
+| `STAR_OFFICE_ENV` | 空 | 设为 `production` 启用生产环境安全检查 |
 
 ## 常见问题
 
@@ -213,7 +211,6 @@ AgentUI/
 | [Flask](https://github.com/pallets/flask) | 3.0 | Python Web 框架 |
 | [Axios](https://github.com/axios/axios) | 最新 | HTTP 客户端 |
 | [Vue Router](https://github.com/vuejs/router) | 4 | Vue 路由管理 |
-| [Star-Office-UI](https://github.com/ringhyacinth/Star-Office-UI) | - | 原版像素办公室（本项目基于此重构） |
 
 ## License
 

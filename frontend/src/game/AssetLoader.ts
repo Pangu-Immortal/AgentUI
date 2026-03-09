@@ -32,8 +32,10 @@ export async function loadAllAssets(): Promise<void> {
   const promises = entries.map(async ([name, path]) => {
     try {
       const texture = await Assets.load<Texture>(path)          // 加载 PNG 为纹理
+      // 设置最近邻插值，保持像素风清晰锐利（不模糊）
+      texture.source.scaleMode = 'nearest'
       baseTextures[name] = texture
-      console.log(`[AssetLoader] 已加载 ${name}: ${path} 尺寸=${texture.width}x${texture.height}`)
+      console.log(`[AssetLoader] 已加载 ${name}: ${path} 尺寸=${texture.width}x${texture.height} scaleMode=nearest`)
     } catch (e) {
       console.warn(`[AssetLoader] 加载失败 ${name}: ${path}`, e)
     }
